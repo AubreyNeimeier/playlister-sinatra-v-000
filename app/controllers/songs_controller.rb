@@ -25,7 +25,8 @@ class SongsController < ApplicationController
   post '/songs' do
     #binding.pry
     @song = Song.create(name: params[:Name])
-    @song.artist = Artist.find_or_create_by(name: params["Artist Name"])
+    @artist = Artist.find_or_create_by(name: params["Artist Name"])
+    @song.artist = @artist
     @song.genre_ids = params[:genres]
     @song.save
     flash[:message] = "Successfully created song."
