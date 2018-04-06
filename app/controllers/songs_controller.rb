@@ -15,16 +15,13 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug' do
-    #binding.pry
     @song = Song.find_by_slug(params[:slug])
     erb :"/songs/show"
   end
 
   post '/songs' do
-    #binding.pry
     @song = Song.create(name: params[:Name])
     @artist = Artist.find_or_create_by(name: params["Artist Name"])
-    #binding.pry
     @song.artist = @artist
     @song.genre_ids = params[:genres]
     @song.save
@@ -33,7 +30,6 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug/edit' do
-    #binding.pry
     @song = Song.find_by_slug(params[:slug])
     erb :"songs/edit"
   end
@@ -41,7 +37,6 @@ class SongsController < ApplicationController
 #remember update corresponds to PATCH!! the edit form needs syntax for patch (hidden input _method)
   patch '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    #binding.pry
     @song.update(name: params["Name"])
     @artist = Artist.find_or_create_by(name: params["Artist Name"])
     @song.artist = @artist
