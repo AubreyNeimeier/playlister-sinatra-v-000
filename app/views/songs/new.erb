@@ -17,21 +17,14 @@
 
   <label> Chose existing Genres </label>
   <br></br>
-<<<<<<< HEAD
-=======
 
-  <% Genre.all.each do |genre| %>
-  <input type="checkbox" name="genres[]" value="<%= genre.id %>" id="<%= genre.name %>"><%= genre.name %>
-  <%end%>
-  <br></br>
->>>>>>> 7ad5404c1294de34c39d076505c34a6dce9668d0
-
-  <% Genre.all.each do |genre| %>
+  <% Genre.each do |genre| %>
   <input type="checkbox" name="genres[]" value="<%= genre.id %>" id="<%= genre.name %>"><%= genre.name %>
   <%end%>
   <br></br>
 
   <input type="submit" value="Create" name="submit">
+
 
   <br></br>
 </form>
